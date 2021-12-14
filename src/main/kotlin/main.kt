@@ -5,6 +5,8 @@ import kotlinx.coroutines.launch
 fun main() {
     println("Empiezo main")
     // Start a coroutine
+    //Globalscope es donde se ejecutara la corutina, no es que sea en segundo plano, en si no esta ligado a la app
+    //va a lo suyo
     GlobalScope.launch {
         println("Corrutina a dormir")
         delay(1000)

@@ -5,6 +5,10 @@ import kotlinx.coroutines.runBlocking
 
 fun main() {
     println("Empiezo main3A")
+
+    //estas corutinas estaran en otro scope distinto
+    //en este caso al poner globalscope no esperara a las corutinas ya que estan en distintos scope
+    //de poner solo launch ahi si esperara a las corutinas
     runBlocking {
         println("Entro en el blocking")
         println("Lanzo corrutina1")

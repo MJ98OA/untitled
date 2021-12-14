@@ -6,12 +6,14 @@ import kotlinx.coroutines.runBlocking
 
 
 fun main() {
+
+
     runBlocking { // this: CoroutineScope
         launch {
             delay(200L)
             println("Tarea del runBlocking")
         }
-
+        //con el coroutinescope esperara a que acabe todo lo que se enecuentre dentro
         coroutineScope { // Definimos un Scope, de aquí no salimos hasta que todas las corrutinas interiores hayan acabado.
             launch {
                 delay(500L)

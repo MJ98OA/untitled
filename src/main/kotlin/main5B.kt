@@ -5,14 +5,17 @@ import kotlin.random.Random
 
 
 fun main() {
-    //funcionSinDeferred()
-    funcionConDeferred()
-}
+    runBlocking {
+        //funcionSinDeferred()
+        funcionConDeferred()
+    }
 
-fun funcionSinDeferred(){
+}
+//el problema principal es que aqui no obtenemos todos los resultados una opcion seria ponerle un runblocking al for pero lo podemos solventar con los deferred
+suspend fun funcionSinDeferred()= coroutineScope {
     println("Entro")
 
-    GlobalScope.launch {
+    launch {
         println("Entro1")
         val list = mutableListOf<Int>()
         for (i in 1..100) {
@@ -23,16 +26,16 @@ fun funcionSinDeferred(){
         println("El resultado sin Deferred es una lista de ${list.size} elementos con \n$list ")
     }
 
-    Thread.sleep(5000) // wait for 2 seconds. Para que tenga tiempo de escribir el resutlado.
+
 }
 
 
-fun funcionConDeferred() {
+suspend fun funcionConDeferred() = coroutineScope {
 
-    GlobalScope.launch {
+    launch {
         val listOfDeferred = mutableListOf<Deferred<Int>>()
         for (i in 1..100) {
-            val a = GlobalScope.async {
+            val a = async {
                 Random.nextInt(0, 9)
             }
             listOfDeferred.add(a)

@@ -6,7 +6,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 val mutex = Mutex()
-
+//lo de mutex seria como los lock vistos previamente
 fun main() {
     for (i in 1..10){
         GlobalScope.launch {

@@ -7,10 +7,12 @@ import kotlin.random.Random
 fun main() {
     funcionErronea()
 }
-
+//con el launch lanzamos de verdad la corutina, cuando hacemos un runblockin no estamos lanzando nada hasta que hagamos un launch
 fun funcionErronea() {
     val c = AtomicInteger()
+    //GlobalScope.launch en el caso de tener esto no hara nada ya que no espera, lanzara las corutinas pero seguira de largo
 
+    //
     runBlocking {
 
         for (i in 1..100)
